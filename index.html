@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Thinking Machine Atlas — An Interactive AI Fundamentals Book</title>
+  <meta name="description" content="An interactive website-book that explains the AI Fundamentals course: agents, search, local search, games, MDPs and reinforcement learning, probability, HMMs, machine learning, neural networks and generative AI.">
+  <!-- Apply the saved theme before the page paints (avoids a flash of the wrong theme) -->
+  <script>
+    try {
+      var saved = localStorage.getItem("atlas-theme");
+      var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      document.documentElement.setAttribute("data-theme", saved || (prefersDark ? "dark" : "light"));
+    } catch (e) { /* storage unavailable: keep the default theme */ }
+  </script>
+  <!-- Fonts: Source Serif 4 (text), Caveat (handwritten notes), JetBrains Mono (code).
+       Offline, the browser falls back to Georgia / cursive / the system monospace font. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=JetBrains+Mono:wght@400;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,400&display=swap">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='10' y='14' width='44' height='36' rx='12' fill='%232c4a9a'/%3E%3Ccircle cx='25' cy='32' r='5' fill='%23fff'/%3E%3Ccircle cx='39' cy='32' r='5' fill='%23fff'/%3E%3Crect x='30' y='4' width='4' height='10' fill='%232c4a9a'/%3E%3C/svg%3E">
+</head>
+<body>
+  <a class="skip-link" href="#app">Skip to content</a>
+
+  <!-- Reading progress for the current page -->
+  <div class="read-progress" aria-hidden="true"><span id="readBar"></span></div>
+
+  <!-- ===== Top bar ===== -->
+  <header class="topbar">
+    <button class="icon-btn menu-btn" id="menuBtn" aria-label="Open the table of contents" aria-expanded="false" aria-controls="sidebar">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+    <a class="brand" href="#home" aria-label="The Thinking Machine Atlas — home">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-text">The Thinking Machine Atlas</span>
+    </a>
+    <div class="journey-progress" role="group" aria-label="Journey progress">
+      <div class="jp-bar" role="progressbar" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0" id="jpBar" aria-label="Chapters visited"><span id="jpFill"></span></div>
+      <span class="jp-label" id="jpLabel">0 / 10 stations</span>
+    </div>
+    <button class="icon-btn" id="themeBtn" aria-label="Switch to dark theme">
+      <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3M4.6 4.6l2.1 2.1M17.3 17.3l2.1 2.1M4.6 19.4l2.1-2.1M17.3 6.7l2.1-2.1"/></svg>
+      <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+    </button>
+  </header>
+
+  <div class="layout">
+    <!-- ===== Sidebar: table of contents (filled by script.js) ===== -->
+    <nav class="sidebar" id="sidebar" aria-label="Table of contents">
+      <div class="sidebar-inner" id="toc"></div>
+    </nav>
+    <div class="scrim" id="scrim" hidden></div>
+
+    <!-- ===== Main content: each page is rendered here by script.js ===== -->
+    <main id="app" tabindex="-1" aria-live="polite">
+      <noscript>
+        <div class="noscript">This interactive book needs JavaScript. Please enable JavaScript in your browser and reload the page.</div>
+      </noscript>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <p>The Thinking Machine Atlas, an EndTerm project for AI Fundamentals (AIF1303). Plain HTML, CSS and JavaScript; works offline.</p>
+    <p class="kbd-hint">Turn pages with the <kbd>←</kbd> and <kbd>→</kbd> keys.</p>
+  </footer>
+
+  <!-- Content (data) first, then the application logic -->
+  <script src="js/content-weeks-1-5.js"></script>
+  <script src="js/content-weeks-6-10.js"></script>
+  <script src="js/content-extras.js"></script>
+  <script src="js/labs.js"></script>
+  <script src="js/visuals.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
